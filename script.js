@@ -1,20 +1,19 @@
 //your JS code here. If required.
-async function delayAndShowMessage(){
-	const textInput=document.getElementById('text');
-	const delayInput=document.getElementById('delay');
-	const outPut=document.getElementById('output');
+    const text=document.getElementById("text");
+	const delay=document.getElementById("delay");
+   const btn=document.getElementById("btn");
+	const outPut=document.getElementById("output");
 
-	const text=textInput.value.trim();
-	const delayInSec=parseInt(delayInput.value);
-
-	if(text==='' || isNaN(delayInSec) || delayInSec<0){
-		alert('Please enter valid text and delay');
-		return;
-	}
-	const delayMilliSec=delayInSec*1000;
-	await new Promise(resolve=>setTimeout(resolve,delayMilliSec));
-
-	outPut.textContent=text;
+async function showMessage(){
+	
+	const message=text.value;
+	
+	const delayVal=delay.vlue;
+	await new Promise(resolve=>setTimeout(resolve,delayVal));
+	outPut.innerText=message;
 	
 }
-document.getElementById('btn').addEventListener('click',delayAndShowMessage);
+showMessage().then(()=>{
+	outPut.innerHTML=text.value;
+})
+btn.addEventListener('click',showMessage);
